@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Automated Self Market</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="choice_your_needs">Choice your needs!</string>
+    <string name="scan_your_goods">Scan your goods!</string>
+    <string name="and_pay_it">And pay it!</string>
+    <string name="tuliskan_nama_anda">Tuliskan nama Anda</string>
+    <string name="tuliskan_alamat_anda">Tuliskan alamat anda</string>
+    <string name="data_diri">Data Diri</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="riwayat_toko">Riwayat Toko</string>
+    <string name="nama_pelanggan">Nama Pelanggan</string>
+    <string name="alamat_pelanggan">Alamat Pelanggan</string>
+    <string name="scan_toko">Scan Toko</string>
+    <string name="riwayat_transaksi">Riwayat Transaksi</string>
+    <string name="toko_yang_dikunjungi">Toko yang Dikunjungi</string>
+    <string name="silakan_scan_toko_yang_anda_kunjungi">Silakan Scan Toko yang Anda Kunjungi!</string>
+    <string name="nama_toko">Nama Toko</string>
+    <string name="selamat_datang_di">Selamat Datang di</string>
+    <string name="alamat_toko">Alamat Toko</string>
+    <string name="diakses_pada">Diakses pada :</string>
+    <string name="tanggal">Tanggal</string>
+    <string name="tagihan">Tagihan :</string>
+    <string name="transaksi">Transaksi</string>
+    <string name="lihat_detail">Lihat Detail</string>
+    <string name="rp_0">Rp.0</string>
+    <string name="tanggal1">Tanggal :</string>
+</resources>
