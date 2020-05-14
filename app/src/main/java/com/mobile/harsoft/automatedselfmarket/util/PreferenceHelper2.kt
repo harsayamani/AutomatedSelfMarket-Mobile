@@ -2,17 +2,19 @@ package com.mobile.harsoft.automatedselfmarket.util
 
 import android.content.Context
 import android.content.SharedPreferences
+import org.jetbrains.anko.defaultSharedPreferences
 
 class PreferenceHelper2(context: Context) {
     private val NAMA_TOKO = "nama_toko"
     private val ID_TOKO = "id_toko"
     private val ALAMAT_TOKO = "alamat_toko"
     private val NAMA_PEMILIK = "nama_pemilik"
-    private val app_prefs: SharedPreferences = context.getSharedPreferences("share", 0)
+    private val app_prefs: SharedPreferences =
+        context.defaultSharedPreferences
 
-    fun clear() {
-        app_prefs.edit().clear().apply()
-    }
+//    fun clear() {
+//        app_prefs.edit().clear().apply()
+//    }
 
     fun putNamaToko(namaToko: String?) {
         val edit = app_prefs.edit()

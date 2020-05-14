@@ -14,8 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="AllowBackup"
         tools:targetApi="n">
+        <activity
+            android:name=".ScanProdukActivity"
+            android:theme="@style/AppTheme2.NoActionBar" />
         <activity
             android:name=".TokoActivity"
             android:theme="@style/AppTheme2.NoActionBar" />

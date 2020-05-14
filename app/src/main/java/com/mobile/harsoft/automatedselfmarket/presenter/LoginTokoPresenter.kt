@@ -35,7 +35,6 @@ class LoginTokoPresenter(
 
                             if (response.isSuccessful) {
                                 if (statusCode == 0) {
-                                    preferenceHelper!!.clear()
                                     preferenceHelper?.putIdToko(dataToko?.get(0)?.id_toko!!)
                                     preferenceHelper?.putNamaToko(dataToko?.get(0)?.nama_toko!!)
                                     preferenceHelper?.putAlamatToko(dataToko?.get(0)?.alamat!!)

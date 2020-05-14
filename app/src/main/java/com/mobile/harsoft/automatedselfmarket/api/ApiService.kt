@@ -1,9 +1,6 @@
 package com.mobile.harsoft.automatedselfmarket.api
 
-import com.mobile.harsoft.automatedselfmarket.model.response.ResponsePelanggan
-import com.mobile.harsoft.automatedselfmarket.model.response.ResponseRiwayatToko
-import com.mobile.harsoft.automatedselfmarket.model.response.ResponseToko
-import com.mobile.harsoft.automatedselfmarket.model.response.ResponseTransaksi
+import com.mobile.harsoft.automatedselfmarket.model.response.*
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -35,4 +32,11 @@ interface ApiService {
     fun getTransaksi(
         @Field("id_pelanggan") idPelanggan: String
     ): Call<ResponseTransaksi>
+
+    @FormUrlEncoded
+    @POST("getProduk")
+    fun scanProduk(
+        @Field("id_produk") idProduk: String,
+        @Field("id_toko") idToko: String
+    ): Call<ResponseProduk>
 }
