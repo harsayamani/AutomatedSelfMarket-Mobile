@@ -5,6 +5,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mobile.harsoft.automatedselfmarket.R
@@ -15,7 +16,8 @@ class KeranjangAdapter(
     private val context: Context,
     private val keranjang: List<Keranjang?>,
     private val listener: (Keranjang) -> Unit,
-    private val listener2: (Keranjang) -> Unit
+    private val listener2: (Keranjang) -> Unit,
+    private val listener3: (Keranjang) -> Unit
 ) : RecyclerView.Adapter<KeranjangAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -28,7 +30,7 @@ class KeranjangAdapter(
     override fun getItemCount(): Int = keranjang.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindItem(keranjang[position]!!, listener, listener2)
+        holder.bindItem(keranjang[position]!!, listener, listener2, listener3)
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -38,12 +40,14 @@ class KeranjangAdapter(
         private val tvKuantitas = itemView.findViewById<TextView>(R.id.tvKuantitas)
         private val btnPlus = itemView.findViewById<TextView>(R.id.btnPlus)
         private val btnMinus = itemView.findViewById<TextView>(R.id.btnMinus)
+        private val ivHapusKeranjang = itemView.findViewById<ImageView>(R.id.ivHapusKeranjang)
 
         @SuppressLint("SetTextI18n")
         fun bindItem(
             keranjang: Keranjang,
             listener: (Keranjang) -> Unit,
-            listener2: (Keranjang) -> Unit
+            listener2: (Keranjang) -> Unit,
+            listener3: (Keranjang) -> Unit
         ) {
             tvNamaProduk.text = keranjang.nama_produk
             tvKategoriProduk.text = keranjang.kategori_produk
@@ -60,6 +64,10 @@ class KeranjangAdapter(
 
             btnPlus.setOnClickListener {
                 listener2(keranjang)
+            }
+
+            ivHapusKeranjang.setOnClickListener {
+                listener3(keranjang)
             }
         }
     }

@@ -39,4 +39,28 @@ interface ApiService {
         @Field("id_produk") idProduk: String,
         @Field("id_toko") idToko: String
     ): Call<ResponseProduk>
+
+    @FormUrlEncoded
+    @POST("transaksi/proses")
+    fun transaksiProses(
+        @Field("id_toko") idToko: String,
+        @Field("id_pelanggan") idPelanggan: String,
+        @Field("total_tagihan") totalTagihan: Int
+    ): Call<Response>
+
+//    $id_produk = $request->id_produk;
+//    $kuantitas = $request->kuantitas;
+//    $harga_update = $request->harga_update;
+//    $id_pelanggan = $request->id_pelanggan;
+//    $status = $request->status;
+
+    @FormUrlEncoded
+    @POST("tambahKeranjang")
+    fun tambahKeranjang(
+        @Field("id_produk") idToko: String,
+        @Field("kuantitas") kuantitas: Int,
+        @Field("harga_update") hargaUpdate: Int,
+        @Field("id_pelanggan") idPelanggan: String,
+        @Field("status") status: Int
+    ): Call<Response>
 }

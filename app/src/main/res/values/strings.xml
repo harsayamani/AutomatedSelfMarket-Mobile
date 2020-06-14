@@ -36,4 +36,6 @@
     <string name="plus">+</string>
     <string name="nol">0</string>
     <string name="bayar">Bayar</string>
+    <string name="qr_code">QR-Code</string>
+    <string name="silahkan_scan_produk_yang_anda_inginkan">Silahkan Scan Produk yang Anda Inginkan!</string>
 </resources>

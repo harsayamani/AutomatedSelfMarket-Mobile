@@ -85,10 +85,10 @@ class ScanTokoActivity : AppCompatActivity(), ZXingScannerView.ResultHandler, To
         preferenceHelper2 = PreferenceHelper2(applicationContext)
         preferenceHelper = PreferenceHelper(applicationContext)
 
-        if (preferenceHelper2?.getIdToko() == p0?.text){
+        if (preferenceHelper2?.getIdToko() == p0?.text) {
             val intent = Intent(this, TokoActivity::class.java)
             startActivity(intent)
-        }else{
+        } else {
             val intent = Intent(this, ScanTokoActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
@@ -106,6 +106,11 @@ class ScanTokoActivity : AppCompatActivity(), ZXingScannerView.ResultHandler, To
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
+        startActivity(
+            Intent(
+                this,
+                MainActivity::class.java
+            ).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+        )
     }
 }

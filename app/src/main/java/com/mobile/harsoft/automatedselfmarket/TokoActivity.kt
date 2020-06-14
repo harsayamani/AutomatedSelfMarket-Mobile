@@ -3,8 +3,10 @@ package com.mobile.harsoft.automatedselfmarket
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -13,8 +15,14 @@ import com.mobile.harsoft.automatedselfmarket.model.sqlitemodel.KeranjangSementa
 import com.mobile.harsoft.automatedselfmarket.tokofragments.DashboardTokoFragment
 import com.mobile.harsoft.automatedselfmarket.tokofragments.KeranjangFragment
 import com.mobile.harsoft.automatedselfmarket.util.PreferenceHelper2
+import com.pusher.client.Pusher
+import com.pusher.client.PusherOptions
+import com.pusher.client.connection.ConnectionEventListener
+import com.pusher.client.connection.ConnectionState
+import com.pusher.client.connection.ConnectionStateChange
 import kotlinx.android.synthetic.main.activity_toko.*
 import org.jetbrains.anko.db.delete
+
 
 class TokoActivity : AppCompatActivity() {
 
@@ -25,8 +33,53 @@ class TokoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_toko)
         setSupportActionBar(toolbar)
+        pusherNotification()
         bottomNav()
         setToko()
+    }
+
+    private fun pusherNotification() {
+        try {
+            val options = PusherOptions()
+            options.setCluster("ap1")
+
+            val pusher = Pusher("cc57b7190625d1c6e36f", options)
+
+            pusher.connect(object : ConnectionEventListener {
+                override fun onConnectionStateChange(change: ConnectionStateChange) {
+                    Log.i(
+                        "Pusher",
+                        "State changed from ${change.previousState} to ${change.currentState}"
+                    )
+                }
+
+                override fun onError(
+                    message: String,
+                    code: String,
+                    e: Exception
+                ) {
+                    Log.i(
+                        "Pusher",
+                        "There was a problem connecting! code ($code), message ($message), exception($e)"
+                    )
+                }
+            }, ConnectionState.ALL)
+
+            val channel = pusher.subscribe("harsoft-channel")
+            channel.bind("transaksiselesai-event") { event ->
+                Log.i("Pusher", "Received event with data: $event")
+                val alertDialog: AlertDialog.Builder = AlertDialog.Builder(this)
+                alertDialog.setTitle("Alert!")
+                alertDialog.setIcon(R.mipmap.logo)
+                alertDialog.setMessage("Transaksi Selesai")
+                alertDialog.setNegativeButton("Tutup") { dialogInterface, i ->
+
+                }
+                alertDialog.show()
+            }
+        }catch (e:Exception){
+            Toast.makeText(this, e.message, Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -37,7 +90,8 @@ class TokoActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when (item?.itemId) {
-            R.id.keranjang -> {
+            R.id.scanQR -> {
+                startActivity(Intent(this, ScanProdukActivity::class.java))
                 true
             }
 
