@@ -2,6 +2,7 @@ package com.mobile.harsoft.automatedselfmarket
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.mobile.harsoft.automatedselfmarket.mainfragments.DashboardFragment
@@ -55,5 +56,18 @@ class MainActivity : AppCompatActivity() {
             )
             .replace(R.id.content, fragment, fragment.javaClass.simpleName)
             .commit()
+    }
+
+    override fun onBackPressed() {
+        val alertDialog: AlertDialog.Builder = AlertDialog.Builder(this)
+        alertDialog.setTitle("Alert!")
+        alertDialog.setIcon(R.mipmap.logo)
+        alertDialog.setMessage("Apakah anda ingin keluar?")
+        alertDialog.setPositiveButton("Ya") { dialogInterface, i ->
+            finishAffinity()
+        }
+        alertDialog.setNegativeButton("Tidak") { dialogInterface, i ->
+        }
+        alertDialog.show()
     }
 }
