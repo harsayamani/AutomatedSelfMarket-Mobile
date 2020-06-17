@@ -39,11 +39,11 @@ class TambahKeranjangPresenter(
                     val message = response.body()?.message
 
                     if (response.isSuccessful) {
-                        if(statusCode == 0){
+                        if (statusCode == 0) {
                             view.hideLoading()
 //                            view.showAlert(message)
                         }
-                    }else{
+                    } else {
                         view.hideLoading()
                         view.showAlert(response.message())
                     }

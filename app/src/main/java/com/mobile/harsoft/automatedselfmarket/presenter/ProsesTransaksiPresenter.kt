@@ -31,7 +31,7 @@ class ProsesTransaksiPresenter(
                             if (statusCode == 0) {
                                 view.hideLoading()
                                 view.showAlertDialog(message)
-                            } else{
+                            } else {
                                 view.hideLoading()
                                 view.showAlert(message)
                             }

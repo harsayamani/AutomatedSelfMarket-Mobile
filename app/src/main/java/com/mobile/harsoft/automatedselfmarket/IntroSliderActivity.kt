@@ -3,7 +3,6 @@ package com.mobile.harsoft.automatedselfmarket
 import android.content.Intent
 import android.os.Bundle
 import android.view.Window
-import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.github.paolorotolo.appintro.AppIntro2
@@ -25,10 +24,11 @@ class IntroSliderActivity : AppIntro2(), PelangganView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        this.window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )
+//        this.window.setFlags(
+//            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//            WindowManager.LayoutParams.FLAG_FULLSCREEN
+//        )
+//
         super.onCreate(savedInstanceState)
         preferenceState()
     }

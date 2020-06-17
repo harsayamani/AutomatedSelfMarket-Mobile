@@ -2,7 +2,7 @@ package com.mobile.harsoft.automatedselfmarket.presenter
 
 import com.mobile.harsoft.automatedselfmarket.api.ApiRepo
 import com.mobile.harsoft.automatedselfmarket.database.DatabaseHelper
-import com.mobile.harsoft.automatedselfmarket.model.Keranjang
+import com.mobile.harsoft.automatedselfmarket.model.KeranjangLocal
 import com.mobile.harsoft.automatedselfmarket.model.response.ResponseProduk
 import com.mobile.harsoft.automatedselfmarket.model.sqlitemodel.KeranjangSementara
 import com.mobile.harsoft.automatedselfmarket.util.PreferenceHelper
@@ -63,7 +63,7 @@ class ProdukPresenter(
                                                 "(" + KeranjangSementara.PRODUK_ID + "={id})",
                                                 "id" to id_produk
                                             )
-                                        val state = result.parseList(classParser<Keranjang>())
+                                        val state = result.parseList(classParser<KeranjangLocal>())
 
                                         if (state.isEmpty()) {
                                             insert(

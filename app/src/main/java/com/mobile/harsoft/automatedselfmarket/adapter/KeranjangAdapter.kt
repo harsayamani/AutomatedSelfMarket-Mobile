@@ -9,15 +9,15 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mobile.harsoft.automatedselfmarket.R
-import com.mobile.harsoft.automatedselfmarket.model.Keranjang
+import com.mobile.harsoft.automatedselfmarket.model.KeranjangLocal
 
 
 class KeranjangAdapter(
     private val context: Context,
-    private val keranjang: List<Keranjang?>,
-    private val listener: (Keranjang) -> Unit,
-    private val listener2: (Keranjang) -> Unit,
-    private val listener3: (Keranjang) -> Unit
+    private val keranjang: List<KeranjangLocal?>,
+    private val listener: (KeranjangLocal) -> Unit,
+    private val listener2: (KeranjangLocal) -> Unit,
+    private val listener3: (KeranjangLocal) -> Unit
 ) : RecyclerView.Adapter<KeranjangAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -44,10 +44,10 @@ class KeranjangAdapter(
 
         @SuppressLint("SetTextI18n")
         fun bindItem(
-            keranjang: Keranjang,
-            listener: (Keranjang) -> Unit,
-            listener2: (Keranjang) -> Unit,
-            listener3: (Keranjang) -> Unit
+            keranjang: KeranjangLocal,
+            listener: (KeranjangLocal) -> Unit,
+            listener2: (KeranjangLocal) -> Unit,
+            listener3: (KeranjangLocal) -> Unit
         ) {
             tvNamaProduk.text = keranjang.nama_produk
             tvKategoriProduk.text = keranjang.kategori_produk

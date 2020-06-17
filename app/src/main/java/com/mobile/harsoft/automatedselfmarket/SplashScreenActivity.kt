@@ -3,8 +3,6 @@ package com.mobile.harsoft.automatedselfmarket
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.view.Window
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.mobile.harsoft.automatedselfmarket.util.PreferenceHelper
 
@@ -13,11 +11,11 @@ class SplashScreenActivity : AppCompatActivity() {
     private var preferenceHelper: PreferenceHelper? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )
+//        this.requestWindowFeature(Window.FEATURE_NO_TITLE)
+//        window.setFlags(
+//            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//            WindowManager.LayoutParams.FLAG_FULLSCREEN
+//        )
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
         preferenceHelper = PreferenceHelper(this)

@@ -13,7 +13,7 @@ import com.mobile.harsoft.automatedselfmarket.R
 import com.mobile.harsoft.automatedselfmarket.adapter.KeranjangAdapter
 import com.mobile.harsoft.automatedselfmarket.api.ApiRepo
 import com.mobile.harsoft.automatedselfmarket.database.database
-import com.mobile.harsoft.automatedselfmarket.model.Keranjang
+import com.mobile.harsoft.automatedselfmarket.model.KeranjangLocal
 import com.mobile.harsoft.automatedselfmarket.model.sqlitemodel.KeranjangSementara
 import com.mobile.harsoft.automatedselfmarket.presenter.ProsesTransaksiPresenter
 import com.mobile.harsoft.automatedselfmarket.presenter.TambahKeranjangPresenter
@@ -33,7 +33,7 @@ import org.jetbrains.anko.db.update
 @Suppress("DEPRECATION")
 class KeranjangFragment : Fragment(), ProsesView {
 
-    private var keranjangs: MutableList<Keranjang?> = mutableListOf()
+    private var keranjangs: MutableList<KeranjangLocal?> = mutableListOf()
     private var preferenceHelper: PreferenceHelper? = null
     private var preferenceHelper2: PreferenceHelper2? = null
     private lateinit var tambahKeranjang: TambahKeranjangPresenter
@@ -103,7 +103,7 @@ class KeranjangFragment : Fragment(), ProsesView {
             val alertDialog: AlertDialog.Builder = AlertDialog.Builder(requireContext())
             alertDialog.setTitle("Alert!")
             alertDialog.setIcon(R.mipmap.logo)
-            alertDialog.setMessage("Apakah anda sudah selesai mimilih barang di Toko " + preferenceHelper2?.getNamaToko() + "?")
+            alertDialog.setMessage("Apakah anda sudah selesai memilih barang di Toko " + preferenceHelper2?.getNamaToko() + "?")
             alertDialog.setPositiveButton("Ya") { dialogInterface, i ->
 
                 val apiRepo = ApiRepo()
@@ -114,11 +114,16 @@ class KeranjangFragment : Fragment(), ProsesView {
                             delete(KeranjangSementara.TABLE_KERANJANG)
                         }
                         fragmentManager?.beginTransaction()?.detach(this)?.attach(this)?.commit()
-                    }else{
-                        Toast.makeText(requireContext(), "Proses transaksi gagal!", Toast.LENGTH_LONG).show()
+                    } else {
+                        Toast.makeText(
+                            requireContext(),
+                            "Proses transaksi gagal!",
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
-                }else{
-                    Toast.makeText(requireContext(), "Tambah Keranjang Gagal!", Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(requireContext(), "Tambah Keranjang Gagal!", Toast.LENGTH_LONG)
+                        .show()
                 }
             }
             alertDialog.setNegativeButton("Tidak") { dialogInterface, i ->
@@ -165,7 +170,7 @@ class KeranjangFragment : Fragment(), ProsesView {
                     "(" + KeranjangSementara.PELANGGAN_ID + "={id})",
                     "id" to preferenceHelper!!.getIdPelanggan().toString()
                 )
-            val keranjangList = result.parseList(classParser<Keranjang>())
+            val keranjangList = result.parseList(classParser<KeranjangLocal>())
             keranjangs.addAll(keranjangList)
             adapter.notifyDataSetChanged()
         }
@@ -179,7 +184,7 @@ class KeranjangFragment : Fragment(), ProsesView {
                     "(" + KeranjangSementara.PELANGGAN_ID + "={id})",
                     "id" to preferenceHelper!!.getIdPelanggan().toString()
                 )
-            val state = result.parseList(classParser<Keranjang>())
+            val state = result.parseList(classParser<KeranjangLocal>())
             hargaUpdate = 0
             for (data in state) {
                 hargaUpdate += data.kuantitas!! * data.harga_unit!!

@@ -1,5 +1,6 @@
 package com.mobile.harsoft.automatedselfmarket.mainfragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.mobile.harsoft.automatedselfmarket.DetailTransaksiActivity
 import com.mobile.harsoft.automatedselfmarket.R
 import com.mobile.harsoft.automatedselfmarket.adapter.TransaksiAdapter
 import com.mobile.harsoft.automatedselfmarket.api.ApiRepo
@@ -45,8 +47,24 @@ class TransaksiFragment : Fragment(), TransaksiView {
 
         rvTransaksi.layoutManager = LinearLayoutManager(context)
         adapter = TransaksiAdapter(this.requireContext(), transaksi, toko) {
+            var namaToko = ""
+            var alamatToko = ""
 
+            for (data in toko) {
+                if (data?.id_toko == it.id_toko) {
+                    namaToko = data?.nama_toko.toString()
+                    alamatToko = data?.alamat.toString()
+                    break
+                }
+            }
+
+            val intent = Intent(context, DetailTransaksiActivity::class.java)
+            intent.putExtra("detail_transaksi", it)
+            intent.putExtra("nama_toko", namaToko)
+            intent.putExtra("alamat_toko", alamatToko)
+            startActivity(intent)
         }
+
         rvTransaksi.adapter = adapter
 
         swipe.setOnRefreshListener {

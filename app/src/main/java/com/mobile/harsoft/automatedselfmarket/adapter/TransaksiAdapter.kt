@@ -41,14 +41,20 @@ class TransaksiAdapter(
         private val tvNamaToko = containerView.findViewById<TextView>(R.id.tvNamaToko)
 
         @SuppressLint("SetTextI18n")
-        fun bindItem(transaksi: Transaksi, toko: List<Toko?>, listener: (Transaksi) -> Unit) {
+        fun bindItem(
+            transaksi: Transaksi,
+            toko: List<Toko?>,
+            listener: (Transaksi) -> Unit
+        ) {
             tvIdTransaksi.text = "Transaksi#" + transaksi.id_transaksi
             tvTagihan.text = "Rp." + transaksi.total_tagihan.toString()
             tvTanggalTransaksi.text = transaksi.created_at
 
             for (data in toko) {
-                tvNamaToko.text = data?.nama_toko
-                break
+                if (data?.id_toko == transaksi.id_toko) {
+                    tvNamaToko.text = data?.nama_toko
+                    break
+                }
             }
 
             containerView.setOnClickListener {

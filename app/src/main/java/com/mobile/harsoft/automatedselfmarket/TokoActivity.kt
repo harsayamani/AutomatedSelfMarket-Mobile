@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.google.android.material.snackbar.Snackbar
 import com.mobile.harsoft.automatedselfmarket.database.database
 import com.mobile.harsoft.automatedselfmarket.model.sqlitemodel.KeranjangSementara
 import com.mobile.harsoft.automatedselfmarket.tokofragments.DashboardTokoFragment
@@ -68,16 +69,10 @@ class TokoActivity : AppCompatActivity() {
             val channel = pusher.subscribe("harsoft-channel")
             channel.bind("transaksiselesai-event") { event ->
                 Log.i("Pusher", "Received event with data: $event")
-                val alertDialog: AlertDialog.Builder = AlertDialog.Builder(this)
-                alertDialog.setTitle("Alert!")
-                alertDialog.setIcon(R.mipmap.logo)
-                alertDialog.setMessage("Transaksi Selesai")
-                alertDialog.setNegativeButton("Tutup") { dialogInterface, i ->
-
-                }
-                alertDialog.show()
+                val snack = Snackbar.make(parentView, "Transaksi Selesai!", Snackbar.LENGTH_LONG)
+                snack.show()
             }
-        }catch (e:Exception){
+        } catch (e: Exception) {
             Toast.makeText(this, e.message, Toast.LENGTH_LONG).show()
         }
     }

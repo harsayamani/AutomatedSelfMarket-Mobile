@@ -9,9 +9,10 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:background="@drawable/background_toolbar2"
+        android:minHeight="?attr/actionBarSize"
         android:padding="20dp"
         android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
@@ -28,6 +29,7 @@
                 android:id="@+id/tvNamaPelanggan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:text="@string/nama_pelanggan"
                 android:textColor="#fff"
                 android:textSize="20sp"
@@ -38,7 +40,9 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvNamaPelanggan"
+                android:layout_centerHorizontal="true"
                 android:text="@string/alamat_pelanggan"
+                android:textAlignment="center"
                 android:textColor="#fff" />
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>

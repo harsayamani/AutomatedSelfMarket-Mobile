@@ -2,7 +2,6 @@
     <string name="app_name">Automated Self Market</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="choice_your_needs">Choice your needs!</string>
     <string name="scan_your_goods">Scan your goods!</string>
     <string name="and_pay_it">And pay it!</string>
@@ -38,4 +37,17 @@
     <string name="bayar">Bayar</string>
     <string name="qr_code">QR-Code</string>
     <string name="silahkan_scan_produk_yang_anda_inginkan">Silahkan Scan Produk yang Anda Inginkan!</string>
+    <string name="transaksi_0000000">Transaksi#0000000</string>
+    <string name="toko">Toko</string>
+    <string name="jalan">Jalan ...</string>
+    <string name="tanggal_transaksi">Tanggal Transaksi</string>
+    <string name="dd_mm_yy">dd/MM/yy</string>
+    <string name="no">No.</string>
+    <string name="produk">Produk</string>
+    <string name="harga">Harga</string>
+    <string name="kuantitas">Kuantitas</string>
+    <string name="total_rp_0000">Total : Rp.0000</string>
+    <string name="diterima_rp_0000">Diterima : Rp.0000</string>
+    <string name="kembalian_rp_0000">Kembalian : Rp.0000</string>
+    <string name="detail_transaksi">Detail Transaksi</string>
 </resources>
