@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.mobile.harsoft.automatedselfmarket.DetailTransaksiActivity
 import com.mobile.harsoft.automatedselfmarket.R
 import com.mobile.harsoft.automatedselfmarket.adapter.TransaksiAdapter
@@ -27,6 +28,7 @@ class TransaksiFragment : Fragment(), TransaksiView {
     private var toko: MutableList<Toko?> = mutableListOf()
     private lateinit var presenter: TransaksiPresenter
     private lateinit var adapter: TransaksiAdapter
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,9 +69,11 @@ class TransaksiFragment : Fragment(), TransaksiView {
 
         rvTransaksi.adapter = adapter
 
-        swipe.setOnRefreshListener {
+        swipeRefreshLayout = swipe
+
+        swipeRefreshLayout.setOnRefreshListener {
             presenter.getTransaksi(preferenceHelper?.getIdPelanggan())
-            swipe.isRefreshing = false
+            swipeRefreshLayout.isRefreshing = false
         }
     }
 
@@ -78,11 +82,11 @@ class TransaksiFragment : Fragment(), TransaksiView {
     }
 
     override fun showLoading() {
-
+        progressBar.visibility = View.VISIBLE
     }
 
     override fun hideLoading() {
-
+        progressBar.visibility = View.GONE
     }
 
     override fun dataTransaksi(data: List<Transaksi?>?) {

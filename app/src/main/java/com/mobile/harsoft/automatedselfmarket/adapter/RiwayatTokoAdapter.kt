@@ -1,5 +1,6 @@
 package com.mobile.harsoft.automatedselfmarket.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -35,13 +36,16 @@ class RiwayatTokoAdapter(
         private val tvTanggal = itemView.findViewById<TextView>(R.id.tvTanggal)
         private val tvNamaToko = itemView.findViewById<TextView>(R.id.tvNamaTokoRiwayat)
         private val tvAlamatToko = itemView.findViewById<TextView>(R.id.tvAlamatTokoRiwayat)
+        private val tvDiakses = itemView.findViewById<TextView>(R.id.text)
 
+        @SuppressLint("SetTextI18n")
         fun bindItem(riwayatToko: RiwayatToko, toko: List<Toko?>) {
             tvTanggal.text = riwayatToko.created_at
+            tvDiakses.text = "Diakses pada :"
 
             for (data in toko) {
                 if (riwayatToko.id_toko!! == data!!.id_toko) {
-                    tvNamaToko.text = data.nama_toko
+                    tvNamaToko.text = "Toko " + data.nama_toko
                     tvAlamatToko.text = data.alamat
                     break
                 }

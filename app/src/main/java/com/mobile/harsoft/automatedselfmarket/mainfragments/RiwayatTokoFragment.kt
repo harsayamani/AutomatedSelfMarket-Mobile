@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.mobile.harsoft.automatedselfmarket.R
 import com.mobile.harsoft.automatedselfmarket.adapter.RiwayatTokoAdapter
 import com.mobile.harsoft.automatedselfmarket.api.ApiRepo
@@ -27,6 +28,7 @@ class RiwayatTokoFragment : Fragment(), RiwayatTokoView {
     private var toko: MutableList<Toko?> = mutableListOf()
     private lateinit var presenter: RiwayatTokoPresenter
     private lateinit var adapter: RiwayatTokoAdapter
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,9 +51,10 @@ class RiwayatTokoFragment : Fragment(), RiwayatTokoView {
         adapter = RiwayatTokoAdapter(this.requireContext(), riwayatToko, toko)
         rvRiwayatToko.adapter = adapter
 
-        swipe.setOnRefreshListener {
+        swipeRefreshLayout = swipe
+        swipeRefreshLayout.setOnRefreshListener {
             presenter.getRiwayatToko(preferenceHelper?.getIdPelanggan())
-            swipe.isRefreshing = false
+            swipeRefreshLayout.isRefreshing = false
         }
     }
 
@@ -60,9 +63,11 @@ class RiwayatTokoFragment : Fragment(), RiwayatTokoView {
     }
 
     override fun showLoading() {
+        progressBar.visibility = View.VISIBLE
     }
 
     override fun hideLoading() {
+        progressBar.visibility = View.GONE
     }
 
     override fun dataRiwayatToko(data: List<RiwayatToko?>) {

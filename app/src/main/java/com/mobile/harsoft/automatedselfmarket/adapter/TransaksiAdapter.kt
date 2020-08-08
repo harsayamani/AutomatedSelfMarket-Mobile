@@ -52,7 +52,7 @@ class TransaksiAdapter(
 
             for (data in toko) {
                 if (data?.id_toko == transaksi.id_toko) {
-                    tvNamaToko.text = data?.nama_toko
+                    tvNamaToko.text = "Toko " + data?.nama_toko
                     break
                 }
             }
